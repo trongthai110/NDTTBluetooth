@@ -1,6 +1,0 @@
-framework module NDTTBluetooth {
-  umbrella header "NDTTBluetooth-umbrella.h"
-
-  export *
-  module * { export * }
-}
