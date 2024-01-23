@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NDTTBluetooth'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = 'A short description of NDTTBluetooth.'
 
 # This description is used to generate tags and improve search results.
@@ -31,9 +31,6 @@ TODO: Add long description of the pod here.
   s.ios.deployment_target = '10.0'
 
   s.source_files = 'NDTTBluetooth/Classes/**/*'
-  
-  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'x86_64 armv7 arm64', 'VALID_ARCHS' => 'x86_64 armv7 arm64',}
-  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'x86_64 armv7 arm64', 'VALID_ARCHS' => 'x86_64 armv7 arm64',}
   
   # s.resource_bundles = {
   #   'NDTTBluetooth' => ['NDTTBluetooth/Assets/*.png']

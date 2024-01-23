@@ -1,7 +1,7 @@
 import RxSwift
 import RxBluetoothKit
 
-enum AlcoholServiceConnectState {
+public enum AlcoholServiceConnectState {
     case connecting
     case connected(Peripheral?)
     case disconnected(Result<RxBluetoothKitService.Disconnection, Error>)
@@ -16,7 +16,7 @@ enum AlcoholServiceByteData: Int {
     case address = 18
 }
 
-class AlcoholService {
+public class AlcoholService {
     
         // MARK: - Public outputs
     
@@ -35,32 +35,32 @@ class AlcoholService {
     public var deviceUsageCount = PublishSubject<Int16>()
     public var deviceBattery = PublishSubject<UInt8>()
     
-    func startScan(timeout: Int = 4) {
+    public func startScan(timeout: Int = 4) {
         bluetoothService.startScanning()
     }
     
-    func stopScan() {
+    public func stopScan() {
         bluetoothService.stopScanning()
     }
     
-    func connectTo(_ peripheral: Peripheral, timeout: TimeInterval = 30) {
+    public func connectTo(_ peripheral: Peripheral, timeout: TimeInterval = 30) {
         bluetoothService.discoverServices(for: peripheral)
         onDeviceConnecting()
         timer = Timer.scheduledTimer(timeInterval: timeout, target: self, selector: #selector(onDeviceConnectionTimedOut), userInfo: nil, repeats: false)
     }
     
-    func disconnect(_ peripheral: Peripheral) {
+    public func disconnect(_ peripheral: Peripheral) {
         bluetoothService.disconnect(peripheral)
+    }
+    
+    public init() {
+        initializeSubscribers()
     }
     
         // MARK: - Private Properties
     private let bluetoothService = RxBluetoothKitService()
     private let disposeBag = DisposeBag()
     private var timer: Timer?
-    
-    init() {
-        initializeSubscribers()
-    }
     
     private func initializeSubscribers() {
         subscribeDeviceConnected()
